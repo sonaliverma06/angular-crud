@@ -1,0 +1,26 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">address</th>
+      <th scope="col">contact</th>
+      <th scope="col">city</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let posts of posts">
+      <th scope="row">{{ posts.id }}</th>
+      <td>{{ posts.name }}</td>
+      <td>{{ posts.email }}</td>
+      <td>{{ posts.address }}</td>
+      <td>{{ posts.contact }}</td>
+      <td>{{ posts.city }}</td>
+
+      <td><button (click)="deleteData(posts.id)">Delete</button></td>
+      <td><button (click)="updateData(posts)">updateRoute</button></td>
+    </tr>
+  </tbody>
+</table>

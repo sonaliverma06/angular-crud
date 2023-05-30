@@ -1,0 +1,55 @@
+<form #loginForm="ngForm" (ngSubmit)="updatedata(loginForm.value)">
+  <div class="main">
+    <div class="input-fields">
+      <input
+        name="name"
+        [(ngModel)]="post.name"
+        placeholder="Name"
+        id="name"
+        type="text"
+        class="input-field"
+      />
+    </div>
+    <div class="input-fields">
+      <input
+        name="email"
+        [(ngModel)]="post.email"
+        placeholder="enter email"
+        id="email"
+        type="email"
+        class="input-field"
+      />
+    </div>
+    <div class="input-fields">
+      <input
+        name="address"
+        [(ngModel)]="post.address"
+        placeholder="enter address"
+        id="address"
+        type="text"
+        class="input-field"
+      />
+    </div>
+    <div class="input-fields">
+      <input
+        name="contact"
+        [(ngModel)]="post.contact"
+        placeholder="enter contact"
+        id="contact"
+        type="text"
+        class="input-field"
+      />
+    </div>
+    <div class="input-fields">
+      <input
+        name="city"
+        [(ngModel)]="post.city"
+        placeholder="enter city"
+        id="city"
+        type="text"
+        class="input-field"
+      />
+    </div>
+    <button>Upadte Data</button>
+  </div>
+</form>
