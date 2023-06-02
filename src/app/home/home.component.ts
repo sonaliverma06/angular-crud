@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HomeComponent {
   postForm!: FormGroup;
-
+  products: Array<any> = [];
   constructor(
     private router: Router,
     private appService: AppService,
@@ -18,7 +18,20 @@ export class HomeComponent {
     private route: ActivatedRoute
   ) {}
 
+  getproduct() {
+    this.appService.getproduct().subscribe({
+      next: (res) => {
+        this.products = res.products;
+        console.log('products.....', this.products);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
   ngOnInit(): void {
+    this.getproduct();
     this.initForm();
     console.log('this.postForm', this.f);
   }

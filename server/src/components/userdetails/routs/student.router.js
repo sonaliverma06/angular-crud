@@ -1,7 +1,6 @@
 const StudentController = require("../controller/user.controllers");
 const express = require("express");
 const StudentRouter = express.Router();
-
 const jwt = require("jsonwebtoken");
 
 StudentRouter.get("/", async (req, res) => {
@@ -75,8 +74,6 @@ StudentRouter.put("/studentput/:id", async (req, res) => {
 });
 
 StudentRouter.post("/register", async (req, res) => {
-  // const data = req.body.user;
-  // console.log("dataxxxxxasqwss", data);
   await StudentController.register(req, res)
     .then((res1) => {
       console.log("ssssssssss", res1);
@@ -89,7 +86,83 @@ StudentRouter.post("/register", async (req, res) => {
       console.log("error", error);
       return res.send(error.message);
     });
-  // return data;
+  
+});
+
+StudentRouter.post("/resetpassword", async (req, res) => {
+await StudentController.reset(req, res)
+    .then((res1) => {
+      res.status(201).json({
+        status: true,
+        data: res1,
+      });
+    })
+    .catch((error) => {
+      console.log("error", error);
+      return res.send(error.message);
+    });
+
+});
+
+
+StudentRouter.post("/forgotpassword", async (req, res) => {
+  await StudentController.forgot(req, res)
+    .then((res1) => {
+      console.log("res1", res1);
+      res.status(201).json({
+        status: true,
+        data: res1,
+      });
+    })
+    .catch((error) => {
+      console.log("error", error);
+      return res.send(error.message);
+    });
+});
+
+
+
+StudentRouter.post("/login/me", async (req, res) => {
+
+  await StudentController.logins(req, res)
+    .then((res1) => {
+      res.status(201).json({
+        status: true,
+        res: res1,
+      });
+    })
+    .catch((error) => {
+      console.log("error", error);
+      return res.send(error.message);
+    });
+
+});
+
+
+
+StudentRouter.post("/profile/me", async (req, res) => {
+   await StudentController.profile(req, res)
+     .then((res1) => {
+      console.log("res1 ghr6u67u67jy7j", res1);
+       res.status(201).json({
+         status: true,
+         data: res1,
+       });
+     })
+     .catch((error) => {
+       console.log("error", error);
+       return res.send(error.message);
+     });
+
+  // console.log("res",res);
+  //  console.log("req", req);
+  // await StudentController.findOne(req, res)
+  //   .then((i) => {
+  //     return res.status(201).json(i);
+  //   })
+  //   .catch((err) => {
+  //     return res.send(err.message);
+  //   });
 });
 
 module.exports = StudentRouter;

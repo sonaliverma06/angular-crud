@@ -8,5 +8,4 @@ import { Observable } from 'rxjs';
 export class UsersService {
   constructor(private http: HttpClient) { }
 
-  // constructor() { }
 }

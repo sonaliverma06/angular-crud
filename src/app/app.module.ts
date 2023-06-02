@@ -12,12 +12,12 @@ import { UpdatestudentComponent } from './updatestudent/updatestudent.component'
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { BlogCardComponent } from './blog-card/blog-card.component';
+import { ForgetpasswordsComponent } from './forgetpasswords/forgetpasswords.component';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  // {path: 'friends', component: FriendComponent},
-  { path: '', component: HomeComponent },
+
 ];
 
 @NgModule({
@@ -29,6 +29,7 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     BlogCardComponent,
+    ForgetpasswordsComponent,
   ],
   imports: [
     BrowserModule,

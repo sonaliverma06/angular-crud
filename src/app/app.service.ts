@@ -53,5 +53,28 @@ export class AppService {
       .post('http://localhost:4800/api/user/register', data)
       .pipe(catchError(this.HandleError));
   }
-  
+
+  public getproduct(): Observable<any> {
+    return this.http
+      .get('https://dummyjson.com/products')
+      .pipe(catchError(this.HandleError));
+  }
+
+  public addloginuser(data: any): Observable<any> {
+    return this.http
+      .post('http://localhost:4800/api/user/login/me', data)
+      .pipe(catchError(this.HandleError));
+  }
+
+  public resetpass(data: any): Observable<any> {
+    return this.http
+      .post('http://localhost:4800/api/user/resetpassword', data)
+      .pipe(catchError(this.HandleError));
+  }
+
+  public forgotpass(data: any): Observable<any> {
+    return this.http
+      .post('http://localhost:4800/api/user/forgotpassword', data)
+      .pipe(catchError(this.HandleError));
+  }
 }
