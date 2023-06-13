@@ -1,6 +1,7 @@
 const { DataTypes } = require("sequelize");
 
 const { connection } = require("../../../connection/connection");
+const { BlogModel } = require("../../blog/models/blog.models");
 const UserModel = connection.define(
   "users",
   {
@@ -39,5 +40,13 @@ const UserModel = connection.define(
     underscored: true,
   }
 );
+
+
+UserModel.hasMany(BlogModel,{
+    foreignKey: "user_id",
+})
+setTimeout(() => {
+  BlogModel.belongsTo(UserModel, { foreignKey: "user_id" });
+}, 0);
 
 module.exports = { UserModel };

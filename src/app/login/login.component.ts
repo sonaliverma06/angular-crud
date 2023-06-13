@@ -63,24 +63,21 @@ export class LoginComponent {
       email: this.f['email'].value,
       password: this.f['password'].value,
     };
-  
-
     this.appService.addloginuser(loginusers).subscribe({
       next: (res) => {
-     
-        localStorage.setItem('token', res.res.token);
-        console.log("dfg",res.token);
-        console.log('res', res);
-        
+        console.log('safdwe', res);
+        let a = res.res.token;
+        localStorage.setItem('token', a);
 
-        this.router.navigate(['/view']);
+        if (!a) {
+          this.router.navigate(['/login']);
+        } else {
+          this.router.navigate(['/home']);
+        }
       },
       error: (err) => {
         console.log('this.error', err);
-     
       },
     });
   }
 }
-
-

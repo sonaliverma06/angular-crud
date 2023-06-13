@@ -25,6 +25,8 @@ export class ViewstudenttableComponent {
     });
   }
 
+
+
   deleteData(id: any) {
     this.appService.deleteData(id).subscribe({
       next: (res) => {

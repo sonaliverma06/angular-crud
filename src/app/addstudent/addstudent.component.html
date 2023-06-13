@@ -1,0 +1,194 @@
+<form [formGroup]="postForm" (ngSubmit)="submitData()" class="h-[500px] w-[500px] bg-rose-100 ml-[100px]">
+  <div class="main">
+    <div class="input-fields">
+      <label class="ml-[40px]">Name</label>
+      <input
+        name="name"
+      class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[400px] ml-[30px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        formControlName="name"
+        placeholder="Name"
+        id="name"
+        type="text"
+      />
+      <ng-container
+        [ngTemplateOutlet]="formError"
+        [ngTemplateOutletContext]="{
+          validation: 'required',
+          message: 'Name is required',
+          control: postForm.controls['name']
+        }"
+      ></ng-container>
+    </div>
+    <div class="input-fields">
+       <label class="ml-[40px]">email</label>
+      <input
+        formControlName="email"
+        name="email"
+        placeholder="enter email"
+        id="email"
+        type="email"
+       class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[400px] ml-[30px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      />
+      <ng-container
+        [ngTemplateOutlet]="formError"
+        [ngTemplateOutletContext]="{
+          validation: 'required',
+          message: 'Email is required',
+          control: postForm.controls['email']
+        }"
+      ></ng-container>
+      <ng-container
+        [ngTemplateOutlet]="formError"
+        [ngTemplateOutletContext]="{
+          validation: 'email',
+          message: 'Email is invalid',
+          control: postForm.controls['email']
+        }"
+      ></ng-container>
+      <ng-container
+        [ngTemplateOutlet]="formError"
+        [ngTemplateOutletContext]="{
+          validation: 'minLength',
+          message: 'Email should have at least 3 symbols',
+          control: postForm.controls['email']
+        }"
+      ></ng-container>
+      <ng-container
+        [ngTemplateOutlet]="formError"
+        [ngTemplateOutletContext]="{
+          validation: 'maxLength',
+          message: 'Email should have maximum 360 symbols',
+          control: postForm.controls['email']
+        }"
+      ></ng-container>
+    </div>
+    <div class="input-fields">
+       <label class="ml-[40px]">password</label>
+      <input
+        formControlName="password"
+        name="password"
+        class="form-control"
+        placeholder="enter password"
+        id="password"
+        type="password"
+       class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[400px] ml-[30px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      />
+      <ng-container
+        [ngTemplateOutlet]="formError"
+        [ngTemplateOutletContext]="{
+          validation: 'required',
+          message: 'Password is required',
+          control: postForm.controls['password']
+        }"
+      ></ng-container>
+      <ng-container
+        [ngTemplateOutlet]="formError"
+        [ngTemplateOutletContext]="{
+          validation: 'minlength',
+          message: 'Password should have at least 3 symbols',
+          control: postForm.controls['password']
+        }"
+      ></ng-container>
+      <ng-container
+        [ngTemplateOutlet]="formError"
+        [ngTemplateOutletContext]="{
+          validation: 'maxLength',
+          message: 'Password should have maximum 100 symbols',
+          control: postForm.controls['password']
+        }"
+      ></ng-container>
+      <ng-container
+        [ngTemplateOutlet]="formError"
+        [ngTemplateOutletContext]="{
+          validation: 'pattern',
+          message:
+            'Password should contain atleast uppercase, lowercase, special character,number and limit 8-20 must be required.',
+          control: postForm.controls['password']
+        }"
+      ></ng-container>
+    </div>
+    <div class="input-fields">
+       <label class="ml-[40px]">address</label>
+      <input
+        name="address"
+      class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[400px] ml-[30px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        formControlName="address"
+        placeholder="address"
+        id="address"
+        type="text"
+      />
+      <ng-container
+        [ngTemplateOutlet]="formError"
+        [ngTemplateOutletContext]="{
+          validation: 'required',
+          message: 'address is required',
+          control: postForm.controls['address']
+        }"
+      ></ng-container>
+    </div>
+    <div class="input-fields">
+       <label class="ml-[40px]">contact</label>
+      <input
+        name="contact"
+       class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[400px] ml-[30px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        formControlName="contact"
+        placeholder="contact"
+        id="contact"
+        type="text"
+      />
+      <ng-container
+        [ngTemplateOutlet]="formError"
+        [ngTemplateOutletContext]="{
+          validation: 'required',
+          message: 'contact is required',
+          control: postForm.controls['contact']
+        }"
+      ></ng-container>
+    </div>
+    <div class="input-fields">
+       <label class="ml-[40px]">city</label>
+      <input
+        name="city"
+        class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[400px] ml-[30px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        formControlName="city"
+        placeholder="city"
+        id="city"
+        type="text"
+      />
+      <ng-container
+        [ngTemplateOutlet]="formError"
+        [ngTemplateOutletContext]="{
+          validation: 'required',
+          message: 'city is required',
+          control: postForm.controls['city']
+        }"
+      ></ng-container>
+    </div>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 border-blue-700 rounded w-[400px] ml-[30px] mt-3">Add Data</button>
+  </div>
+</form>
+
+<!-- for invalid form -->
+<ng-template
+  #formError
+  let-control="control"
+  let-message="message"
+  let-validation="validation"
+>
+  <ng-container
+    *ngIf="control.hasError(validation) && (control.dirty || control.touched)"
+  >
+    <div class="fv-plugins-message-container">
+      <span role="alert" style="color: black" class="ml-[40px]">
+        {{ message }}
+      </span>
+    </div>
+  </ng-container>
+</ng-template>
+
+<div *ngIf="products.length > 0">
+  <div *ngFor="let item of products">
+    <app-blog-card [product]="item"></app-blog-card>
+  </div>
+</div>
+

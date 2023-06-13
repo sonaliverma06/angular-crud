@@ -1,7 +1,10 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
-
 
 @Injectable({
   providedIn: 'root',
@@ -72,9 +75,42 @@ export class AppService {
       .pipe(catchError(this.HandleError));
   }
 
-  public forgotpass(data: any): Observable<any> {
+  public productadd(data: any): Observable<any> {
     return this.http
-      .post('http://localhost:4800/api/user/forgotpassword', data)
+      .post('http://localhost:4800/api/blog/addproduct', data)
+      .pipe(catchError(this.HandleError));
+  }
+
+  public profileShow(): Observable<any> {
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    return this.http
+      .get('http://localhost:4800/api/user/profile/me', {
+        headers: headers,
+      })
+      .pipe(catchError(this.HandleError));
+  }
+
+  public getcountries(): Observable<any> {
+    return this.http
+      .get('http://192.168.1.54:8001/countries')
+      .pipe(catchError(this.HandleError));
+  }
+
+  public getstate(countries: any): Observable<any> {
+    return this.http
+      .get(`http://192.168.1.54:8001/countries/state?country=${countries}`)
+      .pipe(catchError(this.HandleError));
+  }
+
+  public getcitystate(countries: any, state: any): Observable<any> {
+    return this.http
+      .get(
+        `http://192.168.1.54:8001/countries/city?country=${countries}&state=${state}`
+      )
       .pipe(catchError(this.HandleError));
   }
 }
+
+

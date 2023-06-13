@@ -1,0 +1,26 @@
+<div>
+  <label for="first-dropdown">countries Dropdown:</label>
+  <select id="first-dropdown" [formControl]="firstDropdownControl" (ngModelChange)="onDropdown1Change($event)">
+    <option *ngFor="let value of countries" 
+    [value]="value">{{value }}</option>
+  </select>
+</div>
+<div>
+  <label for="second-dropdown">state Dropdown:</label>
+  <select id="second-dropdown" [formControl]="secondDropdownControl" (ngModelChange)="onDropdown2Change($event)">
+    <option *ngFor="let value of secondrop" [value]="value">{{ value }}</option>
+  </select>
+</div>
+<div>
+  <label for="third-dropdown">city Dropdown:</label>
+  <select id="third-dropdown" [formControl]="thirddDropdownControl" (ngModelChange)="onDropdown3Change($event)">
+    <option *ngFor="let value of thirdrop" [value]="value">{{ value }}</option>
+  </select>
+
+  <div>
+    <p>Countries: {{ this.country}}</p>
+    <p>State: {{this.state}}</p>
+    <p>city: {{this.city}}</p>
+    
+  </div>
+</div>

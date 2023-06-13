@@ -13,6 +13,13 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { BlogCardComponent } from './blog-card/blog-card.component';
 import { ForgetpasswordsComponent } from './forgetpasswords/forgetpasswords.component';
+import { UserproductComponent } from './userproduct/userproduct.component';
+import { AddstudentComponent } from './addstudent/addstudent.component';
+import { StateComponent } from './state/state.component';
+import { GraphQLModule } from './graphql.module';
+import { MyGraphqlService } from './my-graphql.service';
+import { Apollo } from 'apollo-angular';
+
 
 
 const routes: Routes = [
@@ -30,6 +37,9 @@ const routes: Routes = [
     RegisterComponent,
     BlogCardComponent,
     ForgetpasswordsComponent,
+    UserproductComponent,
+    AddstudentComponent,
+    StateComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,9 +47,10 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    GraphQLModule,
   ],
 
-  providers: [],
+  providers: [MyGraphqlService, Apollo],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

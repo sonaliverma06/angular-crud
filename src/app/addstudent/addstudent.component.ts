@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { AppService } from '../app.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
+  selector: 'app-addstudent',
+  templateUrl: './addstudent.component.html',
+  styleUrls: ['./addstudent.component.scss'],
 })
-export class RegisterComponent {
+export class AddstudentComponent {
+  postForm!: FormGroup;
+  products: Array<any> = [];
   constructor(
     private router: Router,
     private appService: AppService,
@@ -16,17 +19,30 @@ export class RegisterComponent {
     private route: ActivatedRoute
   ) {}
 
-  registerForm!: FormGroup;
+  getproduct() {
+    this.appService.getproduct().subscribe({
+      next: (res) => {
+        this.products = res.products;
+        console.log('products.....', this.products);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
   ngOnInit(): void {
+    this.getproduct();
     this.initForm();
-    console.log('this.registerForm', this.f);
+
+    console.log('this.postForm', this.f);
   }
   get f() {
-    return this.registerForm.controls;
+    return this.postForm.controls;
   }
 
   initForm(): void {
-    this.registerForm = this.fb.group({
+    this.postForm = this.fb.group({
       name: ['', Validators.compose([Validators.required])],
       email: [
         '',
@@ -49,26 +65,29 @@ export class RegisterComponent {
           ),
         ]),
       ],
+      address: ['', Validators.compose([Validators.required])],
+      contact: ['', Validators.compose([Validators.required])],
+      city: ['', Validators.compose([Validators.required])],
     });
   }
 
-  submituser() {
-    // console.log(
-    //   'bgnhfgrtxfbhrhgfnisf',
-    //   this.f,
-    //   this.registerForm.controls['password'].hasError('pattern')
-    // );
-    let user = {
+  submitData() {
+    console.log(
+      'bgnhfgrtxfbhrhgfnisf',
+      this.f,
+      this.postForm.controls['password'].hasError('pattern')
+    );
+    let student = {
       name: this.f['name'].value,
       email: this.f['email'].value,
       password: this.f['password'].value,
-      address: '',
-      contact: '',
-      city: '',
+      address: this.f['address'].value,
+      city: this.f['city'].value,
+      contact: this.f['contact'].value,
     };
-    console.log('user', user);
+    console.log('statudent', student);
 
-    this.appService.adduser(user).subscribe({
+    this.appService.add(student).subscribe({
       next: (res) => {
         console.log('res', res);
         this.router.navigate(['/view']);
@@ -77,3 +96,14 @@ export class RegisterComponent {
     });
   }
 }
+
+
+
+
+
+
+
+
+
+
+

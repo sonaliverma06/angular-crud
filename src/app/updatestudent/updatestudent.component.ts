@@ -10,7 +10,7 @@ import { AppService } from '../app.service';
 export class UpdatestudentComponent {
   post: any = {};
   postId: any = '';
-  updateForm!: FormGroup;
+  updatetForm!: FormGroup;
   constructor(
     private router: Router,
     private cdr: ChangeDetectorRef,
@@ -23,6 +23,7 @@ export class UpdatestudentComponent {
       this.postId = i.id;
     });
   }
+
 
   ngOnInit(): void {
     console.log('this.id', this.postId);
@@ -40,12 +41,12 @@ export class UpdatestudentComponent {
   }
 
   get f() {
-    return this.updateForm.controls;
+    return this.updatetForm.controls;
   }
 
   initForm(): void {
-    this.updateForm = this.fb.group({});
-    console.log('thidasdfwrfws.id', this.updateForm);
+    this.updatetForm = this.fb.group({});
+    console.log('thidasdfwrfws.id', this.updatetForm);
   }
 
   updatedata(post: any): void {
